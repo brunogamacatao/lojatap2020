@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 // Crio o schema
 const produtoSchema = new mongoose.Schema({
   nome: String,
-  valor: Number
+  valor: Number,
+  foto: String
 });
 
 // Crio e exporto o modelo

@@ -17,6 +17,18 @@ const getProdutoPorId = async (req, res, next) => {
   }
 };
 
+// inicializa o banco com dados de teste
+router.get('/popula', async (req, res) => {
+  await new Produto({'nome': 'Coca-Cola Lata', 'valor': 3.0, 'foto': 'https://d3efjz1jvymzgz.cloudfront.net/Custom/Content/Products/10/11/1011792_refrigerante-coca-cola-lata-350ml-fardo-c-12-unidades_m1_637051111791632885.png'}).save();
+  await new Produto({'nome': 'Suco de Laranja - Jarra', 'valor': 8.0, 'foto': 'https://image.freepik.com/fotos-gratis/jarra-de-suco-de-laranja-e-frutas-laranja-isoladas_80510-975.jpg'}).save();
+  await new Produto({'nome': 'Batata Frita', 'valor': 11.0, 'foto': 'https://cdn.panelinha.com.br/receita/953607600000-Batata-frita-tradicional.jpg'}).save();
+  await new Produto({'nome': 'Pão de Alho', 'valor': 10.0, 'foto': 'https://i0.statig.com.br/bancodeimagens/20/i5/r8/20i5r8xxhtcnc4yne9k4ewt9l.jpg'}).save();
+  await new Produto({'nome': 'Filé a Parmegiana', 'valor': 18.0, 'foto': 'https://leianoticias.com.br/wp-content/uploads/Fil%C3%A9-capa.jpg'}).save();
+  await new Produto({'nome': 'Feijoada', 'valor': 35.0, 'foto': 'https://img.cybercook.com.br/receitas/776/feijoada-623x350.jpeg'}).save();
+
+  res.status(201).json({"status": "sucesso"});
+});
+
 // RETORNAR TODOS OS PRODUTOS
 router.get('/', async (req, res) => {
   res.json(await Produto.find());
