@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./conf/db');
 
@@ -11,6 +12,7 @@ db.once('open', async () => {
   const app = express();
 
   // configurar a aplicação express
+  app.use(cors());
   app.use(express.static('public'));
   app.use(bodyParser.json());
 
@@ -18,7 +20,7 @@ db.once('open', async () => {
   app.use('/produtos', require('./controller/ProdutosController'));
 
   // escutar a porta 3000
-  app.listen(3000, () => {
-    console.log('Servidor no ar no endereço: http://localhost:3000');
+  app.listen(5000, () => {
+    console.log('Servidor no ar no endereço: http://localhost:5000');
   });
 });
