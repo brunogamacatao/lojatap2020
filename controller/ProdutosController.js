@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Produto = require('../model/Produto');
+const seguranca = require('../util/seguranca');
 
 // CRIANDO UMA FUNÇÃO DE MIDDLEWARE PARA PEGAR O PRODUTO PELO ID
 const getProdutoPorId = async (req, res, next) => {
@@ -40,19 +41,22 @@ router.get('/:id', getProdutoPorId, (req, res) => {
 });
 
 // ADICIONAR UM PRODUTO
-router.post('/', async (req, res) => {
+router.post('/', seguranca.autoriza, async (req, res) => {
   let produto = await Produto(req.body).save();
   res.json(produto);
 });
 
 // ALTERAR O PRODUTO COM O ID INFORMADO
-router.put('/:id', getProdutoPorId, async (req, res) => {
-  await Produto.update(req.body);
+router.put('/:id', seguranca.autoriza, getProdutoPorId, async (req, res) => {
+  req.produto.nome = req.body.nome;
+  req.produto.foto = req.body.foto;
+  req.produto.valor = req.body.valor;
+  await req.produto.save();
   res.send('O produto foi atualizado');
 });
 
 // EXCLUIR O PRODUTO INFORMADO
-router.delete('/:id', getProdutoPorId, async (req, res) => {
+router.delete('/:id', seguranca.autoriza, getProdutoPorId, async (req, res) => {
   await req.produto.delete();
   res.send('O produto foi removido');
 });

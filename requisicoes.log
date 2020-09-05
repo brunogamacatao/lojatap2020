@@ -1,0 +1,16 @@
+::1 - GET /produtos/ HTTP/1.1 304 - - 83.542 ms
+::1 - GET /produtos/ HTTP/1.1 304 - - 10.419 ms
+::1 - GET /produtos/5f52cf036d961c18a204e850 HTTP/1.1 200 241 - 22.453 ms
+::1 - GET /produtos/5f52cf036d961c18a204e850 HTTP/1.1 304 - - 203.417 ms
+::1 - GET /produtos/ HTTP/1.1 304 - - 13.218 ms
+::1 - POST /login HTTP/1.1 200 215 - 163.813 ms
+::1 - POST /login HTTP/1.1 200 215 - 67.891 ms
+::1 - GET /login/valida HTTP/1.1 200 106 - 22.736 ms
+::1 - GET /login/valida HTTP/1.1 401 48 - 2.058 ms
+::1 - GET /login/valida HTTP/1.1 500 49 - 3.362 ms
+::1 - GET /login/valida HTTP/1.1 200 106 - 7.742 ms
+::1 - POST /login HTTP/1.1 200 215 - 45.264 ms
+::1 - GET /produtos HTTP/1.1 200 1072 - 85.336 ms
+::1 - POST /produtos HTTP/1.1 401 48 - 4.662 ms
+::1 - POST /produtos HTTP/1.1 200 101 - 47.522 ms
+::1 - GET /produtos HTTP/1.1 200 1174 - 15.518 ms
