@@ -30,6 +30,7 @@ db.once('open', async () => {
 
   // Adicionando as rotas para os controllers
   app.use('/produtos', require('./controller/ProdutosController'));
+  app.use('/usuarios', require('./controller/UsuarioController'));
   app.use('/login', require('./controller/AutorizacaoController'));
 
   // escutar a porta 3000
